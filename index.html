@@ -25,7 +25,7 @@
             --secondary: #00b8ff;
             --accent: #8a2be2;
             --text-main: #ffffff;
-            --text-muted: #a0a0b0;
+            --text-muted: #b0b0c0; /* Brilho levemente aumentado para garantir contraste manual perfeito */
             --glass-bg: rgba(10, 10, 15, 0.5);
             --glass-border: rgba(255, 255, 255, 0.05);
         }
@@ -36,14 +36,42 @@
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; position: relative; }
 
-        /* Camadas de Iluminação Otimizadas para Alta Performance (Aceleração por GPU) */
+        /* ♿ LINK DE SALTO DE ACESSIBILIDADE (SKIP LINK PARA NAVEGAÇÃO POR TECLADO) */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 20px;
+            background: var(--primary);
+            color: #000;
+            padding: 12px 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2000;
+            transition: top 0.2s ease;
+            border-radius: 0 0 8px 8px;
+            text-decoration: none;
+        }
+        .skip-link:focus-visible {
+            top: 0;
+            outline: 3px solid var(--secondary);
+        }
+
+        /* ♿ ESTILIZAÇÃO DO ANEL DE FOCO NEON PARA NAVEGAÇÃO ACESSÍVEL */
+        a:focus-visible, .btn:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* Camadas de Iluminação Otimizadas para Alta Performance */
         .glow-1, .glow-2 {
             position: fixed;
             z-index: -1;
             transform: translateZ(0); 
             will-change: transform;
             pointer-events: none; 
-            contain: strict; /* Isola o elemento para evitar recalculação de layout global */
+            contain: strict;
         }
         .glow-1 { 
             width: 600px; height: 600px; 
@@ -79,11 +107,11 @@
         }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Seção de Apresentação Principal (Banner Otimizado para LCP) */
+        /* Seção Hero */
         header { 
             height: 100vh; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; text-align: center; padding: 0 20px; position: relative; 
-            contain: paint; /* Otimização extrema para carregar o topo em tempo recorde */
+            contain: paint;
         }
         .hero-tag { 
             padding: 8px 20px; background: rgba(0,255,136,0.1); 
@@ -95,12 +123,12 @@
         header h1 span { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         header p { font-size: 18px; color: var(--text-muted); max-width: 650px; margin-bottom: 40px; line-height: 1.6; }
 
-        /* Componentes de Ação Interativa (Botões Otimizados para Touch Mobile) */
+        /* Componentes de Botões */
         .btn { 
             padding: 16px 40px; border-radius: 8px; font-size: 14px; font-weight: 900; 
             text-transform: uppercase; letter-spacing: 2px; cursor: pointer; 
             text-decoration: none; border: none; display: inline-block;
-            min-height: 48px; /* Diretriz de usabilidade mobile do Google */
+            min-height: 48px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease; 
             will-change: transform;
         }
@@ -112,7 +140,7 @@
         .btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); margin-left: 15px; }
         .btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
-        /* 🧭 MARCO PRINCIPAL DE CONTEÚDO (LANDMARK COMPLETO) */
+        /* 🧭 MARCO PRINCIPAL DE CONTEÚDO CONECTADO AO SKIP LINK */
         main {
             display: block;
             width: 100%;
@@ -124,7 +152,7 @@
         .section-header h2 { font-size: 42px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
         .section-header p { color: var(--text-muted); font-size: 16px; }
 
-        /* Grades de Exibição Dinâmica (Cards) */
+        /* Cards */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         .card { 
             background: var(--glass-bg); 
@@ -147,7 +175,7 @@
         .card h3 { font-size: 24px; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; }
         .card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
 
-        /* Área Informativa da Equipe Executiva */
+        /* Lista da Diretoria */
         .team-container { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 50px; }
         .team-list { list-style: none; }
         .team-list li { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -155,7 +183,7 @@
         .role { color: var(--primary); font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
         .name { font-size: 18px; font-weight: 700; color: #fff; }
 
-        /* Animações Fluidas por Hardware (Scroll Reveal) */
+        /* Animações Fluidas por Hardware */
         .hidden { 
             opacity: 0; 
             transform: translateY(40px); 
@@ -176,10 +204,12 @@
 </head>
 <body>
 
+    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
     <div class="glow-1"></div>
     <div class="glow-2"></div>
 
-    <nav>
+    <nav aria-label="Menu Principal">
         <div class="logo">NRG</div>
         <div class="nav-links">
             <a href="#projetos">Projetos</a>
@@ -199,10 +229,10 @@
         </div>
     </header>
 
-    <main>
-        <section id="projetos" class="hidden">
+    <main id="conteudo-principal">
+        <section id="projetos" class="hidden" aria-labelledby="titulo-projetos">
             <div class="section-header">
-                <h2>Em Desenvolvimento</h2>
+                <h2 id="titulo-projetos">Em Desenvolvimento</h2>
                 <p>Conheça os projetos que estão sendo forjados no nosso estúdio.</p>
             </div>
             <div class="grid">
@@ -210,20 +240,20 @@
                     <span class="card-tag">Projeto Principal • RPG</span>
                     <h3>FRUIT POWER</h3>
                     <p>Uma nova era no Roblox. Esqueça os sistemas repetitivos de "bandit beater". Um jogo focado em combate dinâmico, habilidades com física reativa e um sistema de renome onde cada ação importa. Economia baseada em cosméticos, garantindo uma arena justa para todos os jogadores.</p>
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Status: Alfa Interno ➔</a>
+                    <a href="#" aria-label="Ver status de desenvolvimento do Fruit Power" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Status: Alfa Interno ➔</a>
                 </div>
                 <div class="card" style="border-color: rgba(255, 255, 255, 0.05);">
                     <span class="card-tag">Motor e Framework</span>
                     <h3>NRG Core Systems</h3>
-                    <p>O coração dos nossos jogos. Uma suíte de scripts focada em gerenciamento de dados seguros, interfaces limpas (UI/UX) e otimização absoluta para dispositivos móveis, garantindo que nossos jogos alcencem as massas com o máximo de performance.</p>
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Infraestrutura ➔</a>
+                    <p>O coração dos nossos jogos. Uma suíte de scripts focada em gerenciamento de dados seguros, interfaces limpas (UI/UX) e otimização absoluta para dispositivos móveis, garantindo que nossos jogos alcancem as massas com o máximo de performance.</p>
+                    <a href="#" aria-label="Ver documentação da infraestrutura NRG Core Systems" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Infraestrutura ➔</a>
                 </div>
             </div>
         </section>
 
-        <section id="eventos" class="hidden">
+        <section id="eventos" class="hidden" aria-labelledby="titulo-eventos">
             <div class="section-header">
-                <h2>Eventos Oficiais</h2>
+                <h2 id="titulo-eventos">Eventos Oficiais</h2>
                 <p>Iniciativas da NRG para movimentar a comunidade de desenvolvedores.</p>
             </div>
             <div class="grid">
@@ -231,18 +261,18 @@
                     <span class="card-tag" style="background: rgba(0, 255, 136, 0.1); color: var(--primary);">Competição • Em Andamento 🟢</span>
                     <h3>NRG Game Jam</h3>
                     <p>A maior batalha de desenvolvedores do ano está acontecendo AGORA! Os participantes têm até o dia 17 de Julho para testar seus limites e criar sistemas únicos. O prêmio? Recrutamento direto para a equipe de desenvolvimento da NRG.</p>
-                    <a href="https://nrg-recrutamento.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Acessar Portal do Evento ➔</a>
+                    <a href="https://nrg-recrutamento.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Acessar o portal oficial externo da NRG Game Jam" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Acessar Portal do Evento ➔</a>
                 </div>
             </div>
         </section>
 
-        <section id="estudio" class="hidden">
+        <section id="estudio" class="hidden" aria-labelledby="titulo-estudio">
             <div class="section-header">
-                <h2>A Diretoria</h2>
+                <h2 id="titulo-estudio">A Diretoria</h2>
                 <p>Uma estrutura baseada no Estatuto Oficial, focada na excelência corporativa.</p>
             </div>
             <div class="team-container">
-                <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 14px; line-height: 1.6;">Nossa equipe de gerenciamento, moderação e design trabalha em sincronia para garantir que a visão da NRG Studios seja entregue com qualidade impecável. A tomada de decisões da diretoria dita o rumo da inovação.</p>
+                <p style="color: var(--text-main); margin-bottom: 30px; font-size: 14px; line-height: 1.6;">Nossa equipe de gerenciamento, moderação e design trabalha em sincronia para garantir que a visão da NRG Studios seja entregue com qualidade impecável. A tomada de decisões da diretoria dita o rumo da inovação.</p>
                 <ul class="team-list">
                     <li>
                         <span class="name">Diretoria Executiva</span>
@@ -264,14 +294,15 @@
             </div>
         </section>
 
-        <section id="contato" class="hidden" style="text-align: center;">
+        <section id="contato" class="hidden" style="text-align: center;" aria-labelledby="titulo-contato">
             <div class="section-header">
-                <h2>Conecte-se</h2>
+                <h2 id="titulo-contato">Conecte-se</h2>
                 <p>Acompanhe o desenvolvimento ou tente uma vaga no nosso estúdio.</p>
             </div>
-            <a href="https://discord.gg/yUrz4emseA" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block;">Acessar o Server do Discord</a>
+            <a href="https://discord.gg/yUrz4emseA" target="_blank" rel="noopener noreferrer" aria-label="Entrar no servidor oficial da NRG Studios no Discord" class="btn btn-primary" style="display: inline-block;">Acessar o Servidor do Discord</a>
         </section>
     </main>
+
     <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
         <p style="color: var(--text-muted); font-size: 13px; font-weight: 700; letter-spacing: 1px;">© 2026 NRG STUDIOS. TODOS OS DIREITOS RESERVADOS.</p>
     </footer>
