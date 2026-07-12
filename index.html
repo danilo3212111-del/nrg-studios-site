@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
+    
     <title>NRG Studios | Desenvolvimento AAA no Roblox</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
     <style>
         :root {
@@ -25,17 +29,17 @@
         /* Reset Otimizado */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
-        /* Scroll Smooth apenas no HTML para evitar bugs de repaint */
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; position: relative; }
 
-        /* Efeitos de Luz de Fundo (Acelerados por GPU) */
+        /* Camadas de Iluminação Otimizadas para Alta Performance (Aceleração por GPU) */
         .glow-1, .glow-2 {
             position: fixed;
             z-index: -1;
-            transform: translateZ(0); /* Força renderização na GPU */
+            transform: translateZ(0); 
             will-change: transform;
-            pointer-events: none; /* Ignora cliques, zero lag */
+            pointer-events: none; 
+            contain: strict; /* Isola o elemento para evitar recalculação de layout global */
         }
         .glow-1 { 
             width: 600px; height: 600px; 
@@ -48,13 +52,13 @@
             bottom: -300px; right: -200px; 
         }
 
-        /* Navegação Glassmorphism Segura */
+        /* Menu de Navegação Glassmorphism */
         nav { 
             position: fixed; top: 0; width: 100%; padding: 20px 50px; 
             display: flex; justify-content: space-between; align-items: center; 
             background: rgba(3, 3, 5, 0.7); 
             backdrop-filter: blur(15px); 
-            -webkit-backdrop-filter: blur(15px); /* Suporte Apple */
+            -webkit-backdrop-filter: blur(15px); 
             border-bottom: 1px solid var(--glass-border); 
             z-index: 1000; 
             transform: translateZ(0);
@@ -71,7 +75,7 @@
         }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Seção Hero (Topo) */
+        /* Seção de Apresentação Principal */
         header { 
             height: 100vh; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; text-align: center; padding: 0 20px; position: relative; 
@@ -86,7 +90,7 @@
         header h1 span { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         header p { font-size: 18px; color: var(--text-muted); max-width: 650px; margin-bottom: 40px; line-height: 1.6; }
 
-        /* Botões de Alto Desempenho */
+        /* Componentes de Ação Interativa (Botões) */
         .btn { 
             padding: 16px 40px; border-radius: 8px; font-size: 14px; font-weight: 900; 
             text-transform: uppercase; letter-spacing: 2px; cursor: pointer; 
@@ -102,19 +106,19 @@
         .btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); margin-left: 15px; }
         .btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
-        /* Área Principal de Conteúdo */
+        /* 🧭 MARCO PRINCIPAL DE CONTEÚDO (LANDMARK PARA ACESSIBILIDADE) */
         main {
             display: block;
             width: 100%;
         }
 
-        /* Seções Gerais */
+        /* Configurações Estruturais de Seção */
         section { padding: 120px 50px; max-width: 1300px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 80px; }
         .section-header h2 { font-size: 42px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
         .section-header p { color: var(--text-muted); font-size: 16px; }
 
-        /* Grid de Projetos e Eventos (Cards) */
+        /* Grades de Exibição Dinâmica (Cards) */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         .card { 
             background: var(--glass-bg); 
@@ -137,7 +141,7 @@
         .card h3 { font-size: 24px; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; }
         .card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
 
-        /* Tabela da Diretoria / Estatuto */
+        /* Área Informativa da Equipe Executiva */
         .team-container { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 50px; }
         .team-list { list-style: none; }
         .team-list li { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -145,7 +149,7 @@
         .role { color: var(--primary); font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
         .name { font-size: 18px; font-weight: 700; color: #fff; }
 
-        /* Animações de Entrada Otimizadas */
+        /* Animações Fluidas por Hardware (Scroll Reveal) */
         .hidden { 
             opacity: 0; 
             transform: translateY(40px); 
@@ -154,7 +158,7 @@
         }
         .show { opacity: 1; transform: translateY(0); }
 
-        /* Responsivo */
+        /* Adaptação Responsiva Mobile */
         @media (max-width: 768px) {
             nav { padding: 15px 20px; }
             .nav-links { display: none; }
@@ -236,7 +240,7 @@
                 <ul class="team-list">
                     <li>
                         <span class="name">Diretoria Executiva</span>
-                        <span class="role">Liderança Técnica & Scripting</span>
+                        <span class="role">Liderança Técnico-Operacional</span>
                     </li>
                     <li>
                         <span class="name">Guigo & Mark</span>
@@ -262,19 +266,20 @@
             <a href="https://discord.gg/yUrz4emseA" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block;">Acessar o Servidor do Discord</a>
         </section>
     </main>
+
     <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
         <p style="color: var(--text-muted); font-size: 13px; font-weight: 700; letter-spacing: 1px;">© 2026 NRG STUDIOS. TODOS OS DIREITOS RESERVADOS.</p>
     </footer>
 
     <script>
-        // Blindagem do código JS: Só roda quando o DOM estiver 100% seguro e montado
+        // Bloca a execução paralela e executa apenas em ambiente com DOM pronto
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // RequestAnimationFrame garante que a animação só ocorra no ciclo de refresh da tela (Zero Lag)
+                        // Força a execução sincronizada na frequência do monitor (Zero Lag / Sem Reflow)
                         window.requestAnimationFrame(() => {
                             entry.target.classList.add('show');
                         });
