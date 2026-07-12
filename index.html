@@ -124,7 +124,7 @@
             transform: scaleX(0); transform-origin: left; 
             transition: transform 0.4s ease; 
         }
-        .card:hover { transform: translateY(-10px); border-color: rgba(0, 255, 136, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
         .card:hover::before { transform: scaleX(1); }
         .card-tag { display: inline-block; padding: 5px 12px; background: rgba(255,255,255,0.05); border-radius: 4px; font-size: 11px; font-weight: 700; color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .card-tag.accent { color: var(--accent); background: rgba(138,43,226,0.1); }
@@ -189,13 +189,13 @@
             <p>Conheça os projetos que estão sendo forjados no nosso estúdio.</p>
         </div>
         <div class="grid">
-            <div class="card">
+            <div class="card" style="border-color: rgba(255, 255, 255, 0.05);">
                 <span class="card-tag">Projeto Principal • RPG</span>
                 <h3>FRUIT POWER</h3>
                 <p>Uma nova era no Roblox. Esqueça os sistemas repetitivos de "bandit beater". Um jogo focado em combate dinâmico, habilidades com física reativa e um sistema de renome onde cada ação importa. Economia baseada em cosméticos, garantindo uma arena justa para todos os jogadores.</p>
                 <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Status: Alfa Interno ➔</a>
             </div>
-            <div class="card">
+            <div class="card" style="border-color: rgba(255, 255, 255, 0.05);">
                 <span class="card-tag">Motor e Framework</span>
                 <h3>NRG Core Systems</h3>
                 <p>O coração dos nossos jogos. Uma suíte de scripts focada em gerenciamento de dados seguros, interfaces limpas (UI/UX) e otimização absoluta para dispositivos móveis, garantindo que nossos jogos alcancem as massas com o máximo de performance.</p>
@@ -210,11 +210,12 @@
             <p>Iniciativas da NRG para movimentar a comunidade de desenvolvedores.</p>
         </div>
         <div class="grid">
-            <div class="card" style="border-color: rgba(138,43,226,0.3);">
-                <span class="card-tag accent">Competição • Encerrado</span>
+            <!-- CARTÃO ATUALIZADO: GAME JAM EM ANDAMENTO -->
+            <div class="card" style="border-color: rgba(0, 255, 136, 0.3);">
+                <span class="card-tag" style="background: rgba(0, 255, 136, 0.1); color: var(--primary);">Competição • Em Andamento 🟢</span>
                 <h3>NRG Game Jam</h3>
-                <p>Uma competição insana onde desenvolvedores testaram seus limites criando experiências únicas. Os vencedores garantiram vagas na nossa equipe de desenvolvimento oficial e o cargo de Jammer NRG.</p>
-                <a href="https://nrg-recrutamento.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Visitar Portal da Jam ➔</a>
+                <p>A maior batalha de desenvolvedores do ano está acontecendo AGORA! Os participantes têm até o dia 17 de Julho para testar seus limites e criar sistemas únicos. O prêmio? Recrutamento direto para a equipe de desenvolvimento da NRG.</p>
+                <a href="https://nrg-recrutamento.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Acessar Portal do Evento ➔</a>
             </div>
         </div>
     </section>
