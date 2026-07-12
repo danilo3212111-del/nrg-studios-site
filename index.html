@@ -102,6 +102,12 @@
         .btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); margin-left: 15px; }
         .btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
+        /* Área Principal de Conteúdo */
+        main {
+            display: block;
+            width: 100%;
+        }
+
         /* Seções Gerais */
         section { padding: 120px 50px; max-width: 1300px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 80px; }
@@ -116,7 +122,7 @@
             border: 1px solid var(--glass-border); border-radius: 16px; 
             padding: 40px; overflow: hidden; position: relative; 
             transform: translateZ(0);
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; /* Evita 'all' */
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
         .card::before { 
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; 
@@ -183,79 +189,79 @@
         </div>
     </header>
 
-    <section id="projetos" class="hidden">
-        <div class="section-header">
-            <h2>Em Desenvolvimento</h2>
-            <p>Conheça os projetos que estão sendo forjados no nosso estúdio.</p>
-        </div>
-        <div class="grid">
-            <div class="card" style="border-color: rgba(255, 255, 255, 0.05);">
-                <span class="card-tag">Projeto Principal • RPG</span>
-                <h3>FRUIT POWER</h3>
-                <p>Uma nova era no Roblox. Esqueça os sistemas repetitivos de "bandit beater". Um jogo focado em combate dinâmico, habilidades com física reativa e um sistema de renome onde cada ação importa. Economia baseada em cosméticos, garantindo uma arena justa para todos os jogadores.</p>
-                <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Status: Alfa Interno ➔</a>
+    <main>
+        <section id="projetos" class="hidden">
+            <div class="section-header">
+                <h2>Em Desenvolvimento</h2>
+                <p>Conheça os projetos que estão sendo forjados no nosso estúdio.</p>
             </div>
-            <div class="card" style="border-color: rgba(255, 255, 255, 0.05);">
-                <span class="card-tag">Motor e Framework</span>
-                <h3>NRG Core Systems</h3>
-                <p>O coração dos nossos jogos. Uma suíte de scripts focada em gerenciamento de dados seguros, interfaces limpas (UI/UX) e otimização absoluta para dispositivos móveis, garantindo que nossos jogos alcancem as massas com o máximo de performance.</p>
-                <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Infraestrutura ➔</a>
+            <div class="grid">
+                <div class="card" style="border-color: rgba(255, 255, 255, 0.05);">
+                    <span class="card-tag">Projeto Principal • RPG</span>
+                    <h3>FRUIT POWER</h3>
+                    <p>Uma nova era no Roblox. Esqueça os sistemas repetitivos de "bandit beater". Um jogo focado em combate dinâmico, habilidades com física reativa e um sistema de renome onde cada ação importa. Economia baseada em cosméticos, garantindo uma arena justa para todos os jogadores.</p>
+                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Status: Alfa Interno ➔</a>
+                </div>
+                <div class="card" style="border-color: rgba(255, 255, 255, 0.05);">
+                    <span class="card-tag">Motor e Framework</span>
+                    <h3>NRG Core Systems</h3>
+                    <p>O coração dos nossos jogos. Uma suíte de scripts focada em gerenciamento de dados seguros, interfaces limpas (UI/UX) e otimização absoluta para dispositivos móveis, garantindo que nossos jogos alcancem as massas com o máximo de performance.</p>
+                    <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Infraestrutura ➔</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="eventos" class="hidden">
-        <div class="section-header">
-            <h2>Eventos Oficiais</h2>
-            <p>Iniciativas da NRG para movimentar a comunidade de desenvolvedores.</p>
-        </div>
-        <div class="grid">
-            <!-- CARTÃO ATUALIZADO: GAME JAM EM ANDAMENTO -->
-            <div class="card" style="border-color: rgba(0, 255, 136, 0.3);">
-                <span class="card-tag" style="background: rgba(0, 255, 136, 0.1); color: var(--primary);">Competição • Em Andamento 🟢</span>
-                <h3>NRG Game Jam</h3>
-                <p>A maior batalha de desenvolvedores do ano está acontecendo AGORA! Os participantes têm até o dia 17 de Julho para testar seus limites e criar sistemas únicos. O prêmio? Recrutamento direto para a equipe de desenvolvimento da NRG.</p>
-                <a href="https://nrg-recrutamento.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Acessar Portal do Evento ➔</a>
+        <section id="eventos" class="hidden">
+            <div class="section-header">
+                <h2>Eventos Oficiais</h2>
+                <p>Iniciativas da NRG para movimentar a comunidade de desenvolvedores.</p>
             </div>
-        </div>
-    </section>
+            <div class="grid">
+                <div class="card" style="border-color: rgba(0, 255, 136, 0.3);">
+                    <span class="card-tag" style="background: rgba(0, 255, 136, 0.1); color: var(--primary);">Competição • Em Andamento 🟢</span>
+                    <h3>NRG Game Jam</h3>
+                    <p>A maior batalha de desenvolvedores do ano está acontecendo AGORA! Os participantes têm até o dia 17 de Julho para testar seus limites e criar sistemas únicos. O prêmio? Recrutamento direto para a equipe de desenvolvimento da NRG.</p>
+                    <a href="https://nrg-recrutamento.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Acessar Portal do Evento ➔</a>
+                </div>
+            </div>
+        </section>
 
-    <section id="estudio" class="hidden">
-        <div class="section-header">
-            <h2>A Diretoria</h2>
-            <p>Uma estrutura baseada no Estatuto Oficial, focada na excelência corporativa.</p>
-        </div>
-        <div class="team-container">
-            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 14px; line-height: 1.6;">Nossa equipe de gerenciamento, moderação e design trabalha em sincronia para garantir que a visão da NRG Studios seja entregue com qualidade impecável. A tomada de decisões da diretoria dita o rumo da inovação.</p>
-            <ul class="team-list">
-                <li>
-                    <span class="name">Diretoria Executiva</span>
-                    <span class="role">Liderança Técnica & Scripting</span>
-                </li>
-                <li>
-                    <span class="name">Guigo & Mark</span>
-                    <span class="role">Moderação & Staff</span>
-                </li>
-                <li>
-                    <span class="name">Kaido & Juan</span>
-                    <span class="role">Gestão de Comunidade</span>
-                </li>
-                <li>
-                    <span class="name">Equipe GFX</span>
-                    <span class="role">Identidade Visual e Assets</span>
-                </li>
-            </ul>
-        </div>
-    </section>
+        <section id="estudio" class="hidden">
+            <div class="section-header">
+                <h2>A Diretoria</h2>
+                <p>Uma estrutura baseada no Estatuto Oficial, focada na excelência corporativa.</p>
+            </div>
+            <div class="team-container">
+                <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 14px; line-height: 1.6;">Nossa equipe de gerenciamento, moderação e design trabalha em sincronia para garantir que a visão da NRG Studios seja entregue com qualidade impecável. A tomada de decisões da diretoria dita o rumo da inovação.</p>
+                <ul class="team-list">
+                    <li>
+                        <span class="name">Diretoria Executiva</span>
+                        <span class="role">Liderança Técnica & Scripting</span>
+                    </li>
+                    <li>
+                        <span class="name">Guigo & Mark</span>
+                        <span class="role">Moderação & Staff</span>
+                    </li>
+                    <li>
+                        <span class="name">Kaido & Juan</span>
+                        <span class="role">Gestão de Comunidade</span>
+                    </li>
+                    <li>
+                        <span class="name">Equipe GFX</span>
+                        <span class="role">Identidade Visual e Assets</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-    <section id="contato" class="hidden" style="text-align: center;">
-        <div class="section-header">
-            <h2>Conecte-se</h2>
-            <p>Acompanhe o desenvolvimento ou tente uma vaga no nosso estúdio.</p>
-        </div>
-        <a href="https://discord.gg/yUrz4emseA" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block;">Acessar o Servidor do Discord</a>
-    </section>
-
+        <section id="contato" class="hidden" style="text-align: center;">
+            <div class="section-header">
+                <h2>Conecte-se</h2>
+                <p>Acompanhe o desenvolvimento ou tente uma vaga no nosso estúdio.</p>
+            </div>
+            <a href="https://discord.gg/yUrz4emseA" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block;">Acessar o Servidor do Discord</a>
+        </section>
+    </main>
     <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
         <p style="color: var(--text-muted); font-size: 13px; font-weight: 700; letter-spacing: 1px;">© 2026 NRG STUDIOS. TODOS OS DIREITOS RESERVADOS.</p>
     </footer>
