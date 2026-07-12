@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <meta name="description" content="NRG Studios - Estúdio brasileiro de desenvolvimento de jogos padrão AAA no Roblox. Conheça nossos projetos inovadores, como o Fruit Power, e nossos eventos oficiais.">
+    <meta name="keywords" content="Roblox, NRG Studios, Fruit Power, Game Jam, Lua Scripting, Roblox Studio, Dev Brasil">
+    <meta name="author" content="NRG Studios">
+    
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
     
     <title>NRG Studios | Desenvolvimento AAA no Roblox</title>
@@ -75,10 +79,11 @@
         }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Seção de Apresentação Principal */
+        /* Seção de Apresentação Principal (Banner Otimizado para LCP) */
         header { 
             height: 100vh; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; text-align: center; padding: 0 20px; position: relative; 
+            contain: paint; /* Otimização extrema para carregar o topo em tempo recorde */
         }
         .hero-tag { 
             padding: 8px 20px; background: rgba(0,255,136,0.1); 
@@ -90,11 +95,12 @@
         header h1 span { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         header p { font-size: 18px; color: var(--text-muted); max-width: 650px; margin-bottom: 40px; line-height: 1.6; }
 
-        /* Componentes de Ação Interativa (Botões) */
+        /* Componentes de Ação Interativa (Botões Otimizados para Touch Mobile) */
         .btn { 
             padding: 16px 40px; border-radius: 8px; font-size: 14px; font-weight: 900; 
             text-transform: uppercase; letter-spacing: 2px; cursor: pointer; 
             text-decoration: none; border: none; display: inline-block;
+            min-height: 48px; /* Diretriz de usabilidade mobile do Google */
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease; 
             will-change: transform;
         }
@@ -106,7 +112,7 @@
         .btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); margin-left: 15px; }
         .btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
-        /* 🧭 MARCO PRINCIPAL DE CONTEÚDO (LANDMARK PARA ACESSIBILIDADE) */
+        /* 🧭 MARCO PRINCIPAL DE CONTEÚDO (LANDMARK COMPLETO) */
         main {
             display: block;
             width: 100%;
@@ -209,7 +215,7 @@
                 <div class="card" style="border-color: rgba(255, 255, 255, 0.05);">
                     <span class="card-tag">Motor e Framework</span>
                     <h3>NRG Core Systems</h3>
-                    <p>O coração dos nossos jogos. Uma suíte de scripts focada em gerenciamento de dados seguros, interfaces limpas (UI/UX) e otimização absoluta para dispositivos móveis, garantindo que nossos jogos alcancem as massas com o máximo de performance.</p>
+                    <p>O coração dos nossos jogos. Uma suíte de scripts focada em gerenciamento de dados seguros, interfaces limpas (UI/UX) e otimização absoluta para dispositivos móveis, garantindo que nossos jogos alcencem as massas com o máximo de performance.</p>
                     <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Infraestrutura ➔</a>
                 </div>
             </div>
@@ -263,23 +269,20 @@
                 <h2>Conecte-se</h2>
                 <p>Acompanhe o desenvolvimento ou tente uma vaga no nosso estúdio.</p>
             </div>
-            <a href="https://discord.gg/yUrz4emseA" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block;">Acessar o Servidor do Discord</a>
+            <a href="https://discord.gg/yUrz4emseA" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block;">Acessar o Server do Discord</a>
         </section>
     </main>
-
     <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
         <p style="color: var(--text-muted); font-size: 13px; font-weight: 700; letter-spacing: 1px;">© 2026 NRG STUDIOS. TODOS OS DIREITOS RESERVADOS.</p>
     </footer>
 
     <script>
-        // Bloca a execução paralela e executa apenas em ambiente com DOM pronto
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Força a execução sincronizada na frequência do monitor (Zero Lag / Sem Reflow)
                         window.requestAnimationFrame(() => {
                             entry.target.classList.add('show');
                         });
