@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRG Studios | Desenvolvimento AAA no Roblox</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
+
+:root {
+    --bg-color: #030305;
+    --primary: #00ff88;
+    --secondary: #00b8ff;
+    --accent: #8a2be2;
+    --text-main: #ffffff;
+    --text-muted: #a0a0b0;
+    --glass-bg: rgba(10, 10, 15, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
+
+/* Efeitos de Luz de Fundo */
+.glow-1 { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, rgba(0,0,0,0) 70%); top: -200px; left: -200px; z-index: -1; }
+.glow-2 { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, rgba(138,43,226,0.1) 0%, rgba(0,0,0,0) 70%); bottom: -300px; right: -200px; z-index: -1; }
+
+/* Navegação Glassmorphism */
+nav { position: fixed; top: 0; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(3, 3, 5, 0.7); backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); z-index: 1000; }
+.logo { font-size: 28px; font-weight: 900; letter-spacing: 3px; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-links a { color: var(--text-main); text-decoration: none; margin-left: 40px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+/* Seção Hero (Topo) */
+header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; position: relative; }
+.hero-tag { padding: 8px 20px; background: rgba(0,255,136,0.1); border: 1px solid var(--primary); border-radius: 50px; font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
+header h1 { font-size: 72px; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; }
+header h1 span { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header p { font-size: 18px; color: var(--text-muted); max-width: 650px; margin-bottom: 40px; line-height: 1.6; }
+
+/* Botões */
+.btn { padding: 16px 40px; border-radius: 8px; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; text-decoration: none; transition: 0.3s; border: none; }
+.btn-primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #000; box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4); }
+.btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); margin-left: 15px; }
+.btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+
+/* Seções Gerais */
+section { padding: 120px 50px; max-width: 1300px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 80px; }
+.section-header h2 { font-size: 42px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+.section-header p { color: var(--text-muted); font-size: 16px; }
+
+/* Grid de Projetos e Eventos (Cards) */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+.card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 16px; padding: 40px; transition: 0.4s; overflow: hidden; position: relative; }
+.card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--secondary)); transform: scaleX(0); transform-origin: left; transition: 0.4s; }
+.card:hover { transform: translateY(-10px); border-color: rgba(0, 255, 136, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
+.card:hover::before { transform: scaleX(1); }
+.card-tag { display: inline-block; padding: 5px 12px; background: rgba(255,255,255,0.05); border-radius: 4px; font-size: 11px; font-weight: 700; color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+.card-tag.accent { color: var(--accent); background: rgba(138,43,226,0.1); }
+.card h3 { font-size: 24px; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; }
+.card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+
+/* Tabela da Diretoria / Estatuto */
+.team-container { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 50px; }
+.team-list { list-style: none; }
+.team-list li { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.team-list li:last-child { border-bottom: none; }
+.role { color: var(--primary); font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+.name { font-size: 18px; font-weight: 700; color: #fff; }
+
+/* Animações de Entrada (Scroll) */
+.hidden { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+.show { opacity: 1; transform: translateY(0); }
+
+/* Responsivo */
+@media (max-width: 768px) {
+    header h1 { font-size: 48px; }
+    nav { padding: 15px 20px; }
+    .nav-links { display: none; }
+    section { padding: 80px 20px; }
+    .btn-outline { margin-left: 0; margin-top: 15px; display: inline-block; }
+    .team-list li { flex-direction: column; align-items: flex-start; gap: 5px; }
+}
+</style>
+</head>
+<body>
+
+<div class="glow-1"></div>
+<div class="glow-2"></div>
+
+<nav>
+    <div class="logo">NRG</div>
+    <div class="nav-links">
+        <a href="#projetos">Projetos</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#estudio">O Estúdio</a>
+        <a href="#contato">Contato</a>
+    </div>
+</nav>
+
+<header>
+    <div class="hero-tag">Elevando o Padrão do Roblox</div>
+    <h1>Experiências <span>AAA</span><br>em Desenvolvimento</h1>
+    <p>A NRG Studios é focada em criar sistemas complexos, otimização extrema para mobile e loops de gameplay imersivos. Nós não seguimos tendências, nós as criamos.</p>
+    <div>
+        <a href="#projetos" class="btn btn-primary">Nossos Projetos</a>
+        <a href="#contato" class="btn btn-outline">Junte-se à Equipe</a>
+    </div>
+</header>
+
+<section id="projetos" class="hidden">
+    <div class="section-header">
+        <h2>Em Desenvolvimento</h2>
+        <p>Conheça os projetos que estão sendo forjados no nosso estúdio.</p>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <span class="card-tag">Projeto Principal • RPG</span>
+            <h3>FRUIT POWER</h3>
+            <p>Uma nova era no Roblox. Esqueça os sistemas repetitivos de "bandit beater". Um jogo focado em combate dinâmico, habilidades com física reativa e um sistema de renome onde cada ação importa. Economia baseada em cosméticos, garantindo uma arena justa para todos os jogadores.</p>
+            <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Status: Alfa Interno ➔</a>
+        </div>
+        <div class="card">
+            <span class="card-tag">Motor e Framework</span>
+            <h3>NRG Core Systems</h3>
+            <p>O coração dos nossos jogos. Uma suíte de scripts focada em gerenciamento de dados seguros, interfaces limpas (UI/UX) e otimização absoluta para dispositivos móveis, garantindo que nossos jogos alcancem as massas com o máximo de performance.</p>
+            <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Infraestrutura ➔</a>
+        </div>
+    </div>
+</section>
+
+<section id="eventos" class="hidden">
+    <div class="section-header">
+        <h2>Eventos Oficiais</h2>
+        <p>Iniciativas da NRG para movimentar a comunidade de desenvolvedores.</p>
+    </div>
+    <div class="grid">
+        <div class="card" style="border-color: rgba(138,43,226,0.3);">
+            <span class="card-tag accent">Competição • Encerrado</span>
+            <h3>NRG Game Jam</h3>
+            <p>Uma competição insana onde desenvolvedores testaram seus limites criando experiências únicas. Os vencedores garantiram vagas na nossa equipe de desenvolvimento oficial e o cargo de Jammer NRG.</p>
+            <a href="https://nrg-recrutamento.vercel.app/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Visitar Portal da Jam ➔</a>
+        </div>
+    </div>
+</section>
+
+<section id="estudio" class="hidden">
+    <div class="section-header">
+        <h2>A Diretoria</h2>
+        <p>Uma estrutura baseada no Estatuto Oficial, focada na excelência corporativa.</p>
+    </div>
+    <div class="team-container">
+        <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 14px; line-height: 1.6;">Nossa equipe de gerenciamento, moderação e design trabalha em sincronia para garantir que a visão da NRG Studios seja entregue com qualidade impecável. A tomada de decisões da diretoria dita o rumo da inovação.</p>
+        <ul class="team-list">
+            <li>
+                <span class="name">Diretoria Executiva</span>
+                <span class="role">Liderança Técnica & Scripting</span>
+            </li>
+            <li>
+                <span class="name">Guigo & Mark</span>
+                <span class="role">Moderação & Staff</span>
+            </li>
+            <li>
+                <span class="name">Kaido & Juan</span>
+                <span class="role">Gestão de Comunidade</span>
+            </li>
+            <li>
+                <span class="name">Equipe GFX</span>
+                <span class="role">Identidade Visual e Assets</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="contato" class="hidden" style="text-align: center;">
+    <div class="section-header">
+        <h2>Conecte-se</h2>
+        <p>Acompanhe o desenvolvimento ou tente uma vaga no nosso estúdio.</p>
+    </div>
+    <a href="https://discord.gg/yUrz4emseA" target="_blank" class="btn btn-primary" style="display: inline-block;">Acessar o Servidor do Discord</a>
+</section>
+
+<footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
+    <p style="color: var(--text-muted); font-size: 13px; font-weight: 700; letter-spacing: 1px;">© 2026 NRG STUDIOS. TODOS OS DIREITOS RESERVADOS.</p>
+</footer>
+
+<script>
+// Sistema de Animação de Rolagem (Scroll Reveal)
+const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.hidden').forEach((section) => {
+    observer.observe(section);
+});
+</script>
+
+</body>
+</html>
